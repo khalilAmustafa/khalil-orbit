@@ -333,6 +333,7 @@ export function CertificationsTab() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   className="h-full w-full object-contain opacity-80 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100"
+                  loading="eager"
                   unoptimized
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/45 opacity-0 transition group-hover:opacity-100">
@@ -438,14 +439,15 @@ export function EducationTab() {
               <div className="education-card-inner">
                 {item.image ? (
                   <div className="education-logo-wrap">
-                    <Image
-                      src={item.image}
-                      alt={`${item.school} logo`}
-                      width={96}
-                      height={96}
-                      className="education-logo-image"
-                      unoptimized
-                    />
+                      <Image
+                        src={item.image}
+                        alt={`${item.school} logo`}
+                        width={96}
+                        height={96}
+                        className="education-logo-image"
+                        loading="eager"
+                        unoptimized
+                      />
                   </div>
                 ) : null}
                 <div className="education-card-copy min-w-0">

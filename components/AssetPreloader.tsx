@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { education, portfolioCredentials } from "@/data/portfolio";
 
 type AssetPreloaderProps = {
   onComplete: () => void;
 };
 
 const MINIMUM_LOADING_MS = 700;
-const MAX_LOADING_MS = 5000;
+const MAX_LOADING_MS = 8000;
 const BOOT_COMPLETE_MS = 250;
 const SESSION_KEY = "khalil-portfolio-assets-ready";
 
@@ -17,28 +18,30 @@ function makeFrames(path: string, count: number) {
   );
 }
 
-const criticalAssets = [
-  "/logo.png",
-  "/ASU.png",
-  "/UPV.png",
-  "/backgrounds/terminal-landscape.png",
-  "/backgrounds/bg2.png",
-  "/backgrounds/aboutbg.png",
-  "/backgrounds/edubg.png",
-  ...makeFrames("/animations/Run", 25),
-  ...makeFrames("/animations/Idle", 25),
-  ...makeFrames("/animations/study_idle", 25),
-  ...makeFrames("/animations/running%20with%20goal%20visible", 25),
-];
+const criticalAssets = Array.from(
+  new Set([
+    "/logo.png",
+    "/backgrounds/terminal-landscape.png",
+    "/backgrounds/bg2.png",
+    "/backgrounds/aboutbg.png",
+    "/backgrounds/edubg.png",
+    ...education.flatMap((item) => (item.image ? [item.image] : [])),
+    ...portfolioCredentials.map((item) => item.image),
+    ...makeFrames("/animations/Run", 25),
+    ...makeFrames("/animations/Idle", 25),
+    ...makeFrames("/animations/study_idle", 25),
+    ...makeFrames("/animations/running%20with%20goal%20visible", 25),
+  ]),
+);
 
 function preloadImage(src: string) {
-  return new Promise<void>((resolve) => {
+  return new Promise<{ src: string; ok: boolean }>((resolve) => {
     const image = new window.Image();
 
-    image.onload = () => resolve();
+    image.onload = () => resolve({ src, ok: true });
     image.onerror = () => {
       console.warn(`Failed to preload asset: ${src}`);
-      resolve();
+      resolve({ src, ok: false });
     };
 
     image.src = src;

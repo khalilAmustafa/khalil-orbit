@@ -76,6 +76,7 @@ export function FrameAnimation({
           unoptimized
           sizes="(max-width: 1024px) 80vw, 360px"
           className="frame-animation-image object-contain"
+          loading="eager"
           draggable={false}
         />
       </div>
