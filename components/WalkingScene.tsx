@@ -6,7 +6,7 @@ const GUY_SEQUENCE = [0, 1, 2, 3, 4];
 const GOAL_SEQUENCE = [0, 1, 2, 3, 4];
 const SHEET_COLUMNS = 5;
 const WRAP_OFFSET = 110;
-const START_X = 80;
+const START_X = -50;
 const GAP = 200;
 const SPEED_PX_PER_SECOND = 100;
 
@@ -93,11 +93,15 @@ export function WalkingScene() {
             - Increase --guy-size to make the guy bigger
             - Increase --goal-size to make goal.exe bigger
             - Increase --bg-opacity to make bg2 more visible
-            - Increase --path-bottom to move the whole walking line upward
+            - Increase --path-bottom to move the path line upward
+            - Increase --guy-bottom to move only the guy upward
+            - Increase --goal-bottom to move only the goal upward
             - Increase --scene-height if characters get clipped
           */
           "--scene-height": "300px",
           "--path-bottom": "65px",
+          "--guy-bottom": "55px",
+          "--goal-bottom": "50px",
           "--guy-size": "180px",
           "--goal-size": "210px",
           "--portal-height": "200px",

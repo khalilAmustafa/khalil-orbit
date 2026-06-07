@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import type { ElementType } from "react";
-import { contact, links } from "@/data/portfolio";
+import { contactSection, links } from "@/data/portfolio";
 import { TerminalCard } from "./TerminalCard";
 
 const contactLinks = links.filter((link) =>
@@ -18,13 +18,13 @@ export function Contact() {
     <TerminalCard
       id="contact"
       eyebrow="07_CONTACT_PORTAL"
-      title={contact.title}
+      title={contactSection.title}
       label="> channel open"
       className="lg:col-span-12"
     >
       <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr] lg:items-center">
         <p className="max-w-2xl text-sm leading-7 text-terminal-dim">
-          {contact.text}
+          {contactSection.text}
         </p>
         <div className="grid gap-3 sm:grid-cols-3">
           {contactLinks.map((link) => {

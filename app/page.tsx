@@ -4,6 +4,7 @@ import { useMemo, useState, type CSSProperties } from "react";
 import BackgroundScene from "@/components/BackgroundScene";
 import {
   AboutTab,
+  CertificationsTab,
   ContactTab,
   EducationTab,
   ExperienceTab,
@@ -20,28 +21,32 @@ const panelMeta: Record<TabId, { label: string; command: string }> = {
     label: "01_HOME",
     command: "> initializing portfolio..."
   },
-  about: {
-    label: "02_PROFILE",
-    command: "> reading profile.txt"
-  },
-  skills: {
-    label: "03_KNOWN_ABILITIES",
-    command: "> indexing stack"
-  },
   projects: {
-    label: "04_PROJECTS",
+    label: "02_PROJECTS",
     command: "> loading projects.log"
   },
-  experience: {
-    label: "05_EXPERIENCE",
-    command: "> reading timeline"
+  skills: {
+    label: "03_SKILLS",
+    command: "> indexing stack"
+  },
+  certifications: {
+    label: "04_CERTIFICATIONS",
+    command: "> loading credentials.log"
   },
   education: {
-    label: "06_EDUCATION",
+    label: "05_EDUCATION",
     command: "> checking credentials"
   },
+  experience: {
+    label: "06_EXPERIENCE",
+    command: "> reading timeline"
+  },
+  about: {
+    label: "07_PROFILE",
+    command: "> reading profile.txt"
+  },
   contact: {
-    label: "07_CONTACT_PORTAL",
+    label: "08_CONTACT_PORTAL",
     command: "> opening portal"
   }
 };
@@ -66,6 +71,8 @@ export default function Home() {
         return <EducationTab />;
       case "contact":
         return <ContactTab />;
+      case "certifications":
+        return <CertificationsTab />;
       case "home":
       default:
         return <HomeTab setActiveTab={setActiveTab} />;

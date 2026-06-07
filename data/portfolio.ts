@@ -1,4 +1,4 @@
-export type LinkItem = {
+﻿export type LinkItem = {
   label: string;
   href: string;
   display: string;
@@ -23,24 +23,35 @@ export type Project = {
   }[];
 };
 
+export type Credential = {
+  title: string;
+  issuer: string;
+  date: string;
+  type: "Certification" | "Certificate" | "Competition" | "Hackathon";
+  image: string;
+  description?: string;
+  featured?: boolean;
+};
+
 export const profile = {
   name: "Khalil Mustafa",
   title:
-    "Third-Year Computer Science Student | Backend & Mobile Developer | AWS Certified Cloud Practitioner",
-  location: "Amman, Jordan / Valencia, Spain",
+    "Backend & Cloud-Focused Developer | Full-Stack Systems | AWS Certified Cloud Practitioner",
+  location: "Amman, Jordan ",
   email: "khalil.asad.2005@gmail.com",
   systemInfo: [
-    ["user", "khalil.dev"],
-    ["role", "backend & mobile developer"],
+    ["user", "khalil"],
+    ["role", "backend & cloud-focused developer"],
     ["status", "building"],
     ["location", "Amman / Valencia"],
-    ["focus", "backend, mobile, cloud, AI features"]
+    ["focus", "backend, cloud, full-stack, AI features"]
   ],
   hero: {
+    headline: "Backend & Cloud-Focused Developer",
     subheadline:
-      "Backend systems. Flutter apps. Cloud-ready products. AI-powered features.",
+      "Building APIs, deployment workflows, full-stack systems, and AI-powered product features.",
     intro:
-      "Third-year Computer Science student building practical software across backend APIs, mobile applications, cloud deployment workflows, and AI-powered product features."
+      "I build practical software systems with a focus on backend architecture, cloud-ready deployment, authentication, database-backed workflows, and usable full-stack products."
   },
   about:
     "Third-year Computer Science student focused on backend development, cloud deployment, mobile applications, and AI-powered product features. Built full-stack and mobile projects with authentication, dashboards, database-backed workflows, payment-based access, and structured user journeys. AWS Certified Cloud Practitioner with hands-on experience in backend APIs, Flutter development, data fundamentals, and practical software delivery."
@@ -71,12 +82,13 @@ export const links: LinkItem[] = [
 
 export const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" }
+  { label: "Experience", href: "#experience" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const skills: SkillGroup[] = [
@@ -182,7 +194,7 @@ export const projects: Project[] = [
         label: "> live demo",
         href: "#projects",
         todo: true,
-        hoverLabel: "soon 🤫"
+        hoverLabel: "soon"
       }
     ]
   },
@@ -286,7 +298,7 @@ export const education = [
     details: "GPA: 87/100 | Credits Completed: 89/132"
   },
   {
-    school: "Universitat Politècnica de València",
+    school: "Universitat Politecnica de Valencia",
     credential: "Erasmus Exchange Student, Informatics Engineering",
     location: "Valencia, Spain",
     period: "2025 to 2026",
@@ -308,8 +320,146 @@ export const certifications = [
   }
 ];
 
-export const contact = {
+export const portfolioCredentials: Credential[] = [
+  {
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "May 2026",
+    type: "Certification",
+    image: "/certificates/AWS Certified Cloud Practitioner certificate.png",
+    featured: true
+  },
+  {
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Amazon Web Services / Coursera",
+    date: "May 2026",
+    type: "Certificate",
+    image: "/certificates/AWS Cloud Practitioner Essentials.png"
+  },
+  {
+    title: "Amman CPC 2025",
+    issuer: "ICPC / JCPC",
+    date: "July 2025",
+    type: "Competition",
+    description:
+      "Contestant in the 2025 Amman Collegiate Programming Contest.",
+    image: "/certificates/ammancpc.jpg",
+    featured: true
+  },
+  {
+    title: "IEEEXtreme 19.0",
+    issuer: "IEEE",
+    date: "October 2025",
+    type: "Competition",
+    description: "Participated in IEEEXtreme 19.0 Programming Competition.",
+    image: "/certificates/IEEEXTREME.png"
+  },
+  {
+    title: "AI Week Hackathon 2025",
+    issuer: "IEEE / University of Jordan Computational Intelligence Society",
+    date: "September 2025",
+    type: "Hackathon",
+    description: "Participated in the AI Week Hackathon.",
+    image: "/certificates/AI-Week.jpg"
+  },
+  {
+    title: "Hack Ramadan Jordan 2026",
+    issuer: "Smart Summit for Training and Data Analysis / Yarmouk University",
+    date: "2026",
+    type: "Hackathon",
+    description: "Participated in Hack Ramadan Jordan 2026.",
+    image: "/certificates/hack-ramadan-jordan-2026.jpg"
+  },
+  {
+    title: "UNI Agents Hackathon 2025",
+    issuer: "IEEE TTU Student Branch / Qafza Tech",
+    date: "2025",
+    type: "Hackathon",
+    description:
+      "Achievement certificate for participation in UNI Agents Hackathon 2025.",
+    image: "/certificates/UNI-agents-hackathon.jpg"
+  },
+  {
+    title: "Python for Data Science, AI & Development",
+    issuer: "IBM / Coursera",
+    date: "May 2024",
+    type: "Certificate",
+    image: "/certificates/Python for Data Science, AI & Development.png"
+  },
+  {
+    title: "Python Project for Data Science",
+    issuer: "IBM / Coursera",
+    date: "2024",
+    type: "Certificate",
+    image: "/certificates/Python Project for Data Science.png"
+  },
+  {
+    title: "Data Analysis with Python",
+    issuer: "IBM / Coursera",
+    date: "June 2026",
+    type: "Certificate",
+    image: "/certificates/Data Analysis with Python.png"
+  },
+  {
+    title: "Data Science Methodology",
+    issuer: "IBM / Coursera",
+    date: "June 2026",
+    type: "Certificate",
+    image: "/certificates/Data Science Methodology.png"
+  },
+  {
+    title: "Data Visualization with Python",
+    issuer: "IBM / Coursera",
+    date: "June 2026",
+    type: "Certificate",
+    image: "/certificates/Data Visualization with Python.png"
+  },
+  {
+    title: "Databases and SQL for Data Science with Python",
+    issuer: "IBM / Coursera",
+    date: "June 2026",
+    type: "Certificate",
+    image: "/certificates/Databases and SQL for Data Science with Python.png"
+  },
+  {
+    title: "What is Data Science?",
+    issuer: "IBM / Coursera",
+    date: "May 2024",
+    type: "Certificate",
+    image: "/certificates/What is Data Science.png"
+  },
+  {
+    title: "Foundations: Data, Data, Everywhere",
+    issuer: "Google / Coursera",
+    date: "April 2024",
+    type: "Certificate",
+    image: "/certificates/Foundations Data, Data, Everywhere.png"
+  },
+  {
+    title: "Ask Questions to Make Data-Driven Decisions",
+    issuer: "Google / Coursera",
+    date: "April 2024",
+    type: "Certificate",
+    image: "/certificates/Ask Questions to Make Data-Driven Decisions.png"
+  },
+  {
+    title: "Prepare Data for Exploration",
+    issuer: "Google / Coursera",
+    date: "April 2024",
+    type: "Certificate",
+    image: "/certificates/Prepare Data for Exploration.png"
+  },
+  {
+    title: "Introduction to Front-End Development",
+    issuer: "Meta / Coursera",
+    date: "March 2024",
+    type: "Certificate",
+    image: "/certificates/Introduction to Front-End Development.png"
+  },
+
+];
+
+export const contactSection = {
   title: "Contact Portal",
-  text:
-    "Open to software engineering internships, backend roles, mobile development opportunities, and AI/product-focused technical projects."
+  text: "Open to software engineering internships, backend roles, mobile development opportunities, and AI/product-focused technical projects."
 };
