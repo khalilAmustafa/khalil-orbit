@@ -81,14 +81,13 @@ export const links: LinkItem[] = [
 ];
 
 export const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Education", href: "#education" },
-  { label: "Experience", href: "#experience" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "01_Home", href: "#home" },
+  { label: "02_Experience", href: "#experience" },
+  { label: "03_Education", href: "#education" },
+  { label: "04_Skills", href: "#skills" },
+  { label: "05_Projects", href: "#projects" },
+  { label: "06_Certifications", href: "#certifications" },
+  { label: "07_Contact", href: "#contact" },
 ];
 
 export const skills: SkillGroup[] = [
@@ -278,7 +277,7 @@ export const projects: Project[] = [
 ];
 
 export const experience = {
-  role: "IT / AI Team Member",
+  role: "IT / AI Team Member @ MENA ORG",
   organization: "MENA ORG",
   location: "Jordan / Remote",
   period: "May 2026 to Present",
@@ -295,14 +294,16 @@ export const education = [
     credential: "BSc Computer Science",
     location: "Amman, Jordan",
     period: "Third-Year Student | Expected Graduation: 2027",
-    details: "GPA: 87/100 | Credits Completed: 89/132"
+    details: "GPA: 87/100 | Credits Completed: 89/132",
+    image: "/ASU.png"
   },
   {
-    school: "Universitat Politecnica de Valencia",
+    school: "Universitat Politècnica de València",
     credential: "Erasmus Exchange Student, Informatics Engineering",
     location: "Valencia, Spain",
     period: "2025 to 2026",
-    details: ""
+    details: "",
+    image: "/UPV.png"
   }
 ];
 

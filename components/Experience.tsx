@@ -5,7 +5,7 @@ export function Experience() {
   return (
     <TerminalCard
       id="experience"
-      eyebrow="05_EXPERIENCE"
+      eyebrow="02_EXPERIENCE"
       title="Experience"
       label="> reading timeline"
       className="lg:col-span-6"

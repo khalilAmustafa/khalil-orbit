@@ -5,7 +5,7 @@ export function Education() {
   return (
     <TerminalCard
       id="education"
-      eyebrow="06_EDUCATION"
+      eyebrow="03_EDUCATION"
       title="Education & Certifications"
       label="> credentials verified"
       className="lg:col-span-6"

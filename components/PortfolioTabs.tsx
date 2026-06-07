@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { ArrowDownRight, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { AboutGuy } from "@/components/AboutGuy";
+import { FrameAnimation } from "@/components/FrameAnimation";
 import {
   portfolioCredentials,
-  certifications,
   contactSection,
   education,
   experience,
@@ -18,7 +18,6 @@ import {
 
 export type TabId =
   | "home"
-  | "about"
   | "skills"
   | "projects"
   | "experience"
@@ -87,7 +86,7 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
   );
 }
 
-export function AboutTab() {
+export function ExperienceTab() {
   return (
     <section
       className="about-layout relative min-h-[560px] overflow-hidden"
@@ -113,10 +112,22 @@ export function AboutTab() {
       <div className="about-bg" />
       <div className="about-bg-fade" />
       <article className="about-profile-card about-text-soft-bg relative z-10 max-w-[760px] p-6 lg:w-[58%]">
-        <h2 className="text-xl font-semibold text-terminal-text">Profile</h2>
-        <p className="mt-4 text-sm leading-7 text-terminal-dim">
-          {profile.about}
+        <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
+          {experience.organization}
         </p>
+        <h2 className="mt-2 text-2xl font-semibold text-terminal-text">
+          {experience.role}
+        </h2>
+        <p className="mt-2 text-sm text-terminal-dim">
+          {experience.location} | {experience.period}
+        </p>
+        <ul className="mt-5 space-y-3 text-sm leading-7 text-terminal-dim">
+          {experience.bullets.map((bullet) => (
+            <li key={bullet} className="terminal-list-item">
+              {bullet}
+            </li>
+          ))}
+        </ul>
       </article>
       <AboutGuy />
     </section>
@@ -405,70 +416,69 @@ export function CertificationsTab() {
   );
 }
 
-export function ExperienceTab() {
-  return (
-    <article className="max-w-4xl rounded border border-emerald-500/35 bg-black/88 p-4">
-      <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
-        {experience.organization}
-      </p>
-      <h2 className="mt-2 text-lg font-semibold text-terminal-text">
-        {experience.role}
-      </h2>
-      <p className="mt-1 text-sm text-terminal-dim">
-        {experience.location} | {experience.period}
-      </p>
-      <ul className="mt-4 space-y-3 text-sm leading-7 text-terminal-dim">
-        {experience.bullets.map((bullet) => (
-          <li key={bullet} className="terminal-list-item">
-            {bullet}
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
 export function EducationTab() {
   return (
-    <div className="grid min-w-0 gap-4 lg:grid-cols-2">
-      <section className="space-y-3">
-        {education.map((item) => (
-          <article
-            key={item.school}
-            className="rounded border border-emerald-500/35 bg-black/88 p-4"
-          >
-            <h2 className="text-base font-semibold text-terminal-text">
-              {item.school}
-            </h2>
-            <p className="mt-1 text-sm text-terminal-glow">{item.credential}</p>
-            <p className="mt-2 text-sm leading-6 text-terminal-dim">
-              {item.location} | {item.period}
-            </p>
-            {item.details ? (
-              <p className="mt-1 text-sm leading-6 text-terminal-dim">
-                {item.details}
-              </p>
-            ) : null}
-          </article>
-        ))}
-      </section>
-      <section className="space-y-3">
-        {certifications.map((item) => (
-          <article
-            key={item.name}
-            className="rounded border border-emerald-500/35 bg-black/88 p-4"
-          >
-            <h2 className="text-base font-semibold text-terminal-text">
-              {item.name}
-            </h2>
-            <p className="mt-1 text-sm text-terminal-glow">{item.issuer}</p>
-            <p className="mt-2 text-sm leading-7 text-terminal-dim">
-              {item.details}
-            </p>
-          </article>
-        ))}
-      </section>
-    </div>
+    <section
+      className="education-tab-shell"
+      style={
+        {
+          "--education-bg-opacity": "0.55",
+            } as React.CSSProperties
+          }
+      >
+        <div className="education-bg" />
+        <div className="education-content">
+        <div className="education-layout">
+          <div className="education-list">
+            {education.map((item) => (
+              <article
+              key={item.school}
+              className="education-card"
+            >
+              <div className="education-card-inner">
+                {item.image ? (
+                  <div className="education-logo-wrap">
+                    <Image
+                      src={item.image}
+                      alt={`${item.school} logo`}
+                      width={96}
+                      height={96}
+                      className="education-logo-image"
+                      unoptimized
+                    />
+                  </div>
+                ) : null}
+                <div className="education-card-copy min-w-0">
+                  <h2 className="text-base font-semibold text-terminal-text">
+                    {item.school}
+                  </h2>
+                  <p className="mt-1 text-sm text-terminal-glow">{item.credential}</p>
+                  <p className="mt-2 text-sm leading-6 text-terminal-dim">
+                    {item.location} | {item.period}
+                  </p>
+                  {item.details ? (
+                    <p className="mt-1 text-sm leading-6 text-terminal-dim">
+                      {item.details}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="education-visual" aria-hidden="true">
+          <FrameAnimation
+            framePath="/animations/study_idle"
+            frameCount={25}
+            fps={8}
+            loop
+            alt="Study idle animation"
+            className="education-study-animation"
+          />
+        </div>
+      </div>
+      </div>
+    </section>
   );
 }
 

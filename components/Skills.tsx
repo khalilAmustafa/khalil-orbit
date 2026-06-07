@@ -5,7 +5,7 @@ export function Skills() {
   return (
     <TerminalCard
       id="skills"
-      eyebrow="03_KNOWN_ABILITIES"
+      eyebrow="04_SKILLS"
       title="Skills"
       label="> indexing stack"
       className="lg:col-span-7"

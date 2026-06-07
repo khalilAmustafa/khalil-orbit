@@ -53,7 +53,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           role="tablist"
           className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-1"
         >
-          {navItems.map((item, index) => {
+          {navItems.map((item) => {
             const tab = item.href.replace("#", "") as TabId;
             const isActive = activeTab === tab;
 
@@ -70,7 +70,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                     : "border-terminal-line/40 text-terminal-dim hover:border-terminal-glow hover:bg-terminal-glow/5 hover:text-terminal-glow"
                 }`}
               >
-                {String(index + 1).padStart(2, "0")}_{item.label}
+                {item.label}
               </button>
             );
           })}

@@ -3,7 +3,6 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import BackgroundScene from "@/components/BackgroundScene";
 import {
-  AboutTab,
   CertificationsTab,
   ContactTab,
   EducationTab,
@@ -21,32 +20,28 @@ const panelMeta: Record<TabId, { label: string; command: string }> = {
     label: "01_HOME",
     command: "> initializing portfolio..."
   },
-  projects: {
-    label: "02_PROJECTS",
-    command: "> loading projects.log"
-  },
-  skills: {
-    label: "03_SKILLS",
-    command: "> indexing stack"
-  },
-  certifications: {
-    label: "04_CERTIFICATIONS",
-    command: "> loading credentials.log"
+  experience: {
+    label: "02_EXPERIENCE",
+    command: "> reading organization.log"
   },
   education: {
-    label: "05_EDUCATION",
-    command: "> checking credentials"
+    label: "03_EDUCATION",
+    command: "> loading education.log"
   },
-  experience: {
-    label: "06_EXPERIENCE",
-    command: "> reading timeline"
+  skills: {
+    label: "04_SKILLS",
+    command: "> scanning stack"
   },
-  about: {
-    label: "07_PROFILE",
-    command: "> reading profile.txt"
+  projects: {
+    label: "05_PROJECTS",
+    command: "> loading projects.log"
+  },
+  certifications: {
+    label: "06_CERTIFICATIONS",
+    command: "> loading credentials.log"
   },
   contact: {
-    label: "08_CONTACT_PORTAL",
+    label: "07_CONTACT_PORTAL",
     command: "> opening portal"
   }
 };
@@ -59,8 +54,6 @@ export default function Home() {
 
   const activeContent = useMemo(() => {
     switch (activeTab) {
-      case "about":
-        return <AboutTab />;
       case "skills":
         return <SkillsTab />;
       case "projects":
@@ -80,6 +73,15 @@ export default function Home() {
   }, [activeTab]);
 
   const meta = panelMeta[activeTab];
+  const activeBadgeLabel: Record<TabId, string> = {
+    home: "HOME",
+    experience: "EXPERIENCE",
+    education: "EDUCATION",
+    skills: "SKILLS",
+    projects: "PROJECTS",
+    certifications: "CERTIFICATIONS",
+    contact: "CONTACT"
+  };
 
   return (
     <main className="relative min-h-screen overflow-x-hidden text-terminal-text">
@@ -108,7 +110,7 @@ export default function Home() {
               <p className="mt-1 text-sm text-terminal-dim">{meta.command}</p>
             </div>
             <span className="rounded border border-terminal-line/50 px-2 py-1 text-[0.68rem] uppercase tracking-[0.12em] text-terminal-dim">
-              active: {activeTab}
+              active: {activeBadgeLabel[activeTab]}
             </span>
           </div>
           <div className="relative z-10 h-full min-w-0 overflow-x-hidden overflow-y-auto p-4 sm:p-5 lg:h-[calc(100%-76px)]">

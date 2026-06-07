@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { FrameAnimation } from "@/components/FrameAnimation";
 
-const GUY_SEQUENCE = [0, 1, 2, 3, 4];
-const GOAL_SEQUENCE = [0, 1, 2, 3, 4];
-const SHEET_COLUMNS = 5;
+const RUN_FRAME_COUNT = 25;
+const GOAL_RUN_FRAME_COUNT = 25;
+const RUN_FPS = 10;
+const GOAL_RUN_FPS = 10;
 const WRAP_OFFSET = 110;
 const START_X = -50;
 const GAP = 200;
@@ -14,26 +16,14 @@ export function WalkingScene() {
   const sceneRef = useRef<HTMLDivElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
-  const guyFrameTimeRef = useRef<number | null>(null);
-  const goalFrameTimeRef = useRef<number | null>(null);
   const [guyX, setGuyX] = useState(START_X);
   const [goalX, setGoalX] = useState(START_X + GAP);
-  const [guyFrameStep, setGuyFrameStep] = useState(0);
-  const [goalFrameStep, setGoalFrameStep] = useState(0);
 
   useEffect(() => {
     const tick = (time: number) => {
       const previous = lastTimeRef.current ?? time;
       const deltaSeconds = Math.min((time - previous) / 1000, 0.05);
       const sceneWidth = sceneRef.current?.clientWidth ?? 0;
-
-      if (guyFrameTimeRef.current === null) {
-        guyFrameTimeRef.current = time;
-      }
-
-      if (goalFrameTimeRef.current === null) {
-        goalFrameTimeRef.current = time;
-      }
 
       setGuyX((currentGuyX) => {
         const nextGuyX = currentGuyX + SPEED_PX_PER_SECOND * deltaSeconds;
@@ -47,16 +37,6 @@ export function WalkingScene() {
         return nextGuyX;
       });
 
-      if (time - guyFrameTimeRef.current >= 100) {
-        guyFrameTimeRef.current = time;
-        setGuyFrameStep((current) => (current + 1) % GUY_SEQUENCE.length);
-      }
-
-      if (time - goalFrameTimeRef.current >= 110) {
-        goalFrameTimeRef.current = time;
-        setGoalFrameStep((current) => (current + 1) % GOAL_SEQUENCE.length);
-      }
-
       lastTimeRef.current = time;
       animationFrameRef.current = window.requestAnimationFrame(tick);
     };
@@ -69,17 +49,8 @@ export function WalkingScene() {
       }
       animationFrameRef.current = null;
       lastTimeRef.current = null;
-      guyFrameTimeRef.current = null;
-      goalFrameTimeRef.current = null;
     };
   }, []);
-
-  const guyFrameIndex = GUY_SEQUENCE[guyFrameStep] ?? 0;
-  const goalFrameIndex = GOAL_SEQUENCE[goalFrameStep] ?? 0;
-  const guyCol = guyFrameIndex % SHEET_COLUMNS;
-  const guyRow = Math.floor(guyFrameIndex / SHEET_COLUMNS);
-  const goalCol = goalFrameIndex % SHEET_COLUMNS;
-  const goalRow = Math.floor(goalFrameIndex / SHEET_COLUMNS);
 
   return (
     <div
@@ -120,22 +91,26 @@ export function WalkingScene() {
         className="guy-mover"
         style={{ transform: `translateX(${guyX}px)` }}
       >
-        <div
-          className="guy-sprite"
-          style={{
-            backgroundPosition: `calc(var(--guy-size) * ${-guyCol}) calc(var(--guy-size) * ${-guyRow})`,
-          }}
+        <FrameAnimation
+          framePath="/animations/Run"
+          frameCount={RUN_FRAME_COUNT}
+          fps={RUN_FPS}
+          loop
+          alt="Running animation"
+          className="guy-frame-animation"
         />
       </div>
       <div
         className="goal-mover"
         style={{ transform: `translateX(${goalX}px)` }}
       >
-        <div
-          className="goal-sprite"
-          style={{
-            backgroundPosition: `calc(var(--goal-size) * ${-goalCol}) calc(var(--goal-size) * ${-goalRow})`,
-          }}
+        <FrameAnimation
+          framePath="/animations/running with goal visible"
+          frameCount={GOAL_RUN_FRAME_COUNT}
+          fps={GOAL_RUN_FPS}
+          loop
+          alt="Goal running animation"
+          className="goal-frame-animation"
         />
       </div>
     </div>

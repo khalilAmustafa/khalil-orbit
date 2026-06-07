@@ -6,7 +6,7 @@ export function Projects() {
   return (
     <TerminalCard
       id="projects"
-      eyebrow="04_PROJECTS"
+      eyebrow="05_PROJECTS"
       title="Projects"
       label="> loading projects..."
       className="lg:col-span-12"

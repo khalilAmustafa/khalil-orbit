@@ -248,13 +248,35 @@ dd {
     );
 }
 
-@keyframes aboutGuyFloat {
+.education-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.24) 45%,
+      rgba(0, 0, 0, 0.28) 100%
+    ),
+    url("/backgrounds/edubg.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  opacity: var(--education-bg-opacity);
+}
+
+@keyframes aboutGuyFloatTiny {
   0%,
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 10px, 0);
   }
   50% {
-    transform: translate3d(var(--about-drift-distance), calc(var(--about-float-distance) * -1), 0);
+    transform: translate3d(0, -10px, 0);
   }
 }
 
@@ -268,7 +290,7 @@ dd {
   z-index: 2;
   pointer-events: none;
   overflow: visible;
-  animation: aboutGuyFloat var(--about-float-duration) ease-in-out infinite;
+  animation: aboutGuyFloatTiny 4.8s ease-in-out infinite;
 }
 
 .about-guy-frame {
@@ -289,14 +311,143 @@ dd {
   filter: blur(8px);
 }
 
-.about-guy-sprite {
+.frame-animation-image {
+  image-rendering: pixelated;
+}
+
+.about-guy-animation {
   width: var(--about-guy-size);
   height: var(--about-guy-size);
-  background-image: url("/guy-idle.png");
+  position: relative;
+  display: block;
+}
+
+.education-tab-shell {
+  position: relative;
+  display: flex;
+  min-height: max(100%, calc(100vh - 220px));
+  overflow: hidden;
+}
+
+.education-tab-shell::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  z-index: 0;
+  background-image: url("/backgrounds/edubg.png");
+  background-size: cover;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  background-size: calc(var(--about-guy-size) * 5) calc(var(--about-guy-size) * 5);
+  opacity: 0.18;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+}
+
+.education-content {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: inherit;
+}
+
+.education-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 32px;
+  align-items: center;
+  min-height: inherit;
+  width: 100%;
+}
+
+.education-list {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.education-card {
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.education-card-inner {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.education-card-copy {
+  min-width: 0;
+}
+
+.education-logo-wrap {
+  width: 200px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -12px -20px;
+}
+
+.education-logo-image {
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.education-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  pointer-events: none;
+}
+
+.education-visual::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    transparent 72%
+  );
+  z-index: 0;
+}
+
+.education-visual::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  width: 260px;
+  height: 44px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(34, 197, 94, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.education-study-animation {
+  position: relative;
+  display: block;
+  width: min(320px, 28vw);
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
   image-rendering: pixelated;
-  filter: drop-shadow(0 0 10px rgba(34, 197, 94, var(--about-guy-glow)));
+  z-index: 1;
+  animation: aboutGuyFloatTiny 4.8s ease-in-out infinite;
 }
 
 .certificate-modal-backdrop {
@@ -432,15 +583,11 @@ dd {
   will-change: transform;
 }
 
-.guy-sprite {
+.guy-frame-animation {
   width: var(--guy-size);
   height: var(--guy-size);
-  background-image: url("/guy-run-v1.png");
-  background-repeat: no-repeat;
-  background-size: calc(var(--guy-size) * 5) calc(var(--guy-size) * 5);
-  background-position: calc(var(--guy-size) * -2) 0;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.35));
+  position: relative;
+  display: block;
 }
 
 .goal-mover {
@@ -453,14 +600,19 @@ dd {
   will-change: transform;
 }
 
-.goal-sprite {
+.goal-frame-animation {
   width: var(--goal-size);
   height: var(--goal-size);
-  background-image: url("/goal-running_with_goal_visible.png");
-  background-repeat: no-repeat;
-  background-size: calc(var(--goal-size) * 5) calc(var(--goal-size) * 5);
-  background-position: 0 0;
-  image-rendering: pixelated;
+  position: relative;
+  display: block;
+}
+
+.about-guy-animation .frame-animation-image {
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, var(--about-guy-glow)));
+}
+
+.guy-frame-animation .frame-animation-image,
+.goal-frame-animation .frame-animation-image {
   filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.35));
 }
 
@@ -495,5 +647,34 @@ dd {
 
   .certificate-modal-header {
     padding: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .education-tab-shell {
+    min-height: auto;
+  }
+
+  .education-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .education-visual {
+    min-height: 260px;
+  }
+
+  .education-study-animation {
+    width: min(300px, 80vw);
+  }
+}
+
+@media (max-width: 640px) {
+  .education-card-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .education-logo-wrap {
+    width: 120px;
+    height: 100px;
   }
 }
