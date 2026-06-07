@@ -61,6 +61,10 @@ dd {
   position: relative;
 }
 
+.portfolio-fade-in {
+  animation: portfolio-fade-in 320ms ease-out;
+}
+
 .terminal-card::before {
   content: "";
   pointer-events: none;
@@ -165,6 +169,15 @@ dd {
   }
 }
 
+@keyframes portfolio-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .terminal-card ::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -176,6 +189,38 @@ dd {
 .terminal-card ::-webkit-scrollbar-thumb {
   background: rgba(29, 111, 58, 0.75);
   border-radius: 999px;
+}
+
+.loading-screen {
+  min-height: 100vh;
+  background: #000;
+  color: #37ff78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loading-panel {
+  width: min(420px, 90vw);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(0, 0, 0, 0.75);
+  padding: 24px;
+  box-shadow: 0 0 32px rgba(34, 197, 94, 0.12);
+}
+
+.loading-bar {
+  height: 6px;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.loading-bar-fill {
+  height: 100%;
+  width: var(--progress);
+  background: rgba(34, 197, 94, 0.85);
+  transition: width 160ms ease-out;
 }
 
 /* ── Full-panel Home background with mask-based gradient ── */
