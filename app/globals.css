@@ -189,6 +189,66 @@ dd {
   );
 }
 
+.about-text-soft-bg {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.38),
+    rgba(0, 0, 0, 0.18),
+    transparent
+  );
+}
+
+@keyframes aboutGuyFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(var(--about-drift-distance), calc(var(--about-float-distance) * -1), 0);
+  }
+}
+
+.about-guy-float {
+  position: absolute;
+  right: var(--about-guy-right, 7%);
+  bottom: var(--about-guy-bottom, 80px);
+  width: var(--about-guy-size, 360px);
+  height: var(--about-guy-size, 360px);
+  opacity: var(--about-guy-opacity);
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+  animation: aboutGuyFloat var(--about-float-duration) ease-in-out infinite;
+}
+
+.about-guy-frame {
+  width: var(--about-guy-size);
+  height: var(--about-guy-size);
+  overflow: hidden;
+  position: relative;
+}
+
+.about-guy-shadow {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  bottom: 14px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  filter: blur(8px);
+}
+
+.about-guy-sprite {
+  width: var(--about-guy-size);
+  height: var(--about-guy-size);
+  background-image: url("/guy-idle.png");
+  background-repeat: no-repeat;
+  background-size: calc(var(--about-guy-size) * 5) calc(var(--about-guy-size) * 5);
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, var(--about-guy-glow)));
+}
+
 .walking-scene {
   position: absolute;
   left: 0;

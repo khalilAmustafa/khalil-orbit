@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowDownRight, Github, Linkedin, Mail } from "lucide-react";
+import { AboutGuy } from "@/components/AboutGuy";
 import {
   certifications,
   contact,
@@ -79,12 +80,29 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
 
 export function AboutTab() {
   return (
-    <article className="max-w-3xl rounded border border-emerald-500/35 bg-black/88 p-4">
-      <h2 className="text-xl font-semibold text-terminal-text">Profile</h2>
-      <p className="mt-4 text-sm leading-7 text-terminal-dim">
-        {profile.about}
-      </p>
-    </article>
+    <section
+      className="about-layout relative min-h-[560px] overflow-hidden"
+      style={
+        {
+          "--about-guy-size": "460px",
+          "--about-guy-right": "4%",
+          "--about-guy-bottom": "56px",
+          "--about-guy-opacity": "0.92",
+          "--about-guy-glow": "0.28",
+          "--about-float-distance": "10px",
+          "--about-drift-distance": "6px",
+          "--about-float-duration": "4.5s",
+        } as React.CSSProperties
+      }
+    >
+      <article className="about-profile-card about-text-soft-bg relative z-10 max-w-[760px] p-6 lg:w-[58%]">
+        <h2 className="text-xl font-semibold text-terminal-text">Profile</h2>
+        <p className="mt-4 text-sm leading-7 text-terminal-dim">
+          {profile.about}
+        </p>
+      </article>
+      <AboutGuy />
+    </section>
   );
 }
 
