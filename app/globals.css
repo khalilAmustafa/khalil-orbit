@@ -162,6 +162,33 @@ dd {
   border-radius: 999px;
 }
 
+/* ── Full-panel Home background with mask-based gradient ── */
+.home-panel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/backgrounds/bg2.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 1;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--home-bg-top, 0.04)) 0%,
+    rgba(0, 0, 0, var(--home-bg-upper, 0.08)) 28%,
+    rgba(0, 0, 0, var(--home-bg-mid, 0.22)) 55%,
+    rgba(0, 0, 0, var(--home-bg-bottom, 0.85)) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--home-bg-top, 0.04)) 0%,
+    rgba(0, 0, 0, var(--home-bg-upper, 0.08)) 28%,
+    rgba(0, 0, 0, var(--home-bg-mid, 0.22)) 55%,
+    rgba(0, 0, 0, var(--home-bg-bottom, 0.85)) 100%
+  );
+}
+
 .walking-scene {
   position: absolute;
   left: 0;
@@ -198,7 +225,20 @@ dd {
     rgba(0, 0, 0, var(--bg-dark-mid)) 50%,
     rgba(0, 0, 0, var(--bg-dark-bottom)) 100%
   );
+  /* Feather the top edge so it doesn't create a hard line */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 25%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 25%
+  );
 }
+
+/* walking-upward-fade removed — replaced by .home-panel-bg full-panel mask */
 
 .path-line {
   position: absolute;

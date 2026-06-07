@@ -7,7 +7,7 @@ const GOAL_SEQUENCE = [0, 1, 2, 3, 4];
 const SHEET_COLUMNS = 5;
 const WRAP_OFFSET = 120;
 const START_X = 80;
-const GAP = 220;
+const GAP = 100;
 const SPEED_PX_PER_SECOND = 72;
 
 export function WalkingScene() {
@@ -97,11 +97,11 @@ export function WalkingScene() {
             - Increase --scene-height if characters get clipped
           */
           "--scene-height": "220px",
-          "--path-bottom": "54px",
+          "--path-bottom": "65px",
           "--guy-size": "104px",
-          "--goal-size": "96px",
+          "--goal-size": "150px",
           "--portal-height": "74px",
-          "--bg-opacity": "0.58",
+          "--bg-opacity": "0.25",
           "--bg-height": "175px",
           "--bg-dark-top": "0.28",
           "--bg-dark-mid": "0.10",

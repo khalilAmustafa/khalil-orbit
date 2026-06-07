@@ -68,7 +68,7 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
       </div>
       <div className="rounded border border-emerald-500/35 bg-black/90 p-4 text-xs leading-6 text-terminal-dim">
         <p className="text-terminal-glow">&gt; loading identity...</p>
-        <p>name: Khalil Asaad Mustafa</p>
+        <p>name: Khalil Mustafa</p>
         <p>track: backend / mobile / cloud</p>
         <p>cert: AWS Cloud Practitioner</p>
         <p className="mt-2 text-terminal-glow">&gt; status: ready</p>

@@ -23,7 +23,7 @@ export type Project = {
 };
 
 export const profile = {
-  name: "Khalil Asaad Mustafa",
+  name: "Khalil Mustafa",
   title:
     "Third-Year Computer Science Student | Backend & Mobile Developer | AWS Certified Cloud Practitioner",
   location: "Amman, Jordan / Valencia, Spain",

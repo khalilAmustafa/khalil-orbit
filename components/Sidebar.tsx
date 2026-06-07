@@ -23,7 +23,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden border border-terminal-glow/70 bg-terminal-glow/5 shadow-[0_0_24px_rgba(55,255,120,0.16)]">
             <Image
               src="/logo.png"
-              alt="Khalil Asaad Mustafa logo"
+              alt="Khalil Mustafa logo"
               width={56}
               height={56}
               priority

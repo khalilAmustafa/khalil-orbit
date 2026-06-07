@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import BackgroundScene from "@/components/BackgroundScene";
 import {
   AboutTab,
@@ -49,6 +49,8 @@ const panelMeta: Record<TabId, { label: string; command: string }> = {
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("home");
   const showWalkingScene = activeTab === "home" || activeTab === "contact";
+  const panelBackgroundClass =
+    activeTab === "home" ? "bg-transparent" : "bg-black/[0.92]";
 
   const activeContent = useMemo(() => {
     switch (activeTab) {
@@ -77,8 +79,21 @@ export default function Home() {
       <BackgroundScene />
       <div className="relative z-10 mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-5 px-4 py-4 sm:px-6 lg:h-screen lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:px-10 lg:py-8 xl:px-12">
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <section className="terminal-card relative min-w-0 overflow-hidden rounded-md border border-emerald-500/40 bg-black/[0.92] shadow-terminal lg:h-[calc(100vh-4rem)]">
-          <div className="flex flex-wrap items-start justify-between gap-3 border-b border-terminal-line/35 p-4 sm:p-5">
+        <section
+          className={`terminal-card relative min-w-0 overflow-hidden rounded-md border border-emerald-500/40 ${panelBackgroundClass} shadow-terminal lg:h-[calc(100vh-4rem)]`}
+          style={
+            activeTab === "home"
+              ? ({
+                  "--home-bg-top": "0.04",
+                  "--home-bg-upper": "0.08",
+                  "--home-bg-mid": "0.22",
+                  "--home-bg-bottom": "0.85",
+                } as CSSProperties)
+              : undefined
+          }
+        >
+          {activeTab === "home" && <div className="home-panel-bg" />}
+          <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 border-b border-terminal-line/35 p-4 sm:p-5">
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-terminal-glow">
                 {meta.label}
@@ -89,10 +104,10 @@ export default function Home() {
               active: {activeTab}
             </span>
           </div>
-          <div className="h-full min-w-0 overflow-x-hidden overflow-y-auto p-4 sm:p-5 lg:h-[calc(100%-76px)]">
+          <div className="relative z-10 h-full min-w-0 overflow-x-hidden overflow-y-auto p-4 sm:p-5 lg:h-[calc(100%-76px)]">
             <div
               key={activeTab}
-              className={`active-panel min-w-0 ${showWalkingScene ? "pb-[220px]" : ""}`}
+              className={`active-panel relative z-10 min-w-0 ${showWalkingScene ? "pb-[220px]" : ""}`}
             >
               {activeContent}
             </div>
