@@ -13,7 +13,7 @@ type SidebarProps = {
 export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   return (
     <aside className="z-10 w-full min-w-0 lg:sticky lg:top-8 lg:h-[calc(100vh-4rem)]">
-      <div className="terminal-card flex h-full flex-col rounded-md border border-terminal-line/70 bg-black/70 p-4 shadow-terminal backdrop-blur-sm">
+      <div className="terminal-card flex h-full flex-col rounded-md border border-emerald-500/40 bg-black/90 p-4 shadow-terminal">
         <button
           type="button"
           onClick={() => setActiveTab("home")}

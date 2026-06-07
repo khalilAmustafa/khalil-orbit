@@ -66,7 +66,7 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
           </a>
         </div>
       </div>
-      <div className="rounded border border-terminal-line/50 bg-terminal-bg/60 p-4 text-xs leading-6 text-terminal-dim">
+      <div className="rounded border border-emerald-500/35 bg-black/90 p-4 text-xs leading-6 text-terminal-dim">
         <p className="text-terminal-glow">&gt; loading identity...</p>
         <p>name: Khalil Asaad Mustafa</p>
         <p>track: backend / mobile / cloud</p>
@@ -79,7 +79,7 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
 
 export function AboutTab() {
   return (
-    <article className="max-w-3xl rounded border border-terminal-line/40 bg-terminal-bg/45 p-4">
+    <article className="max-w-3xl rounded border border-emerald-500/35 bg-black/88 p-4">
       <h2 className="text-xl font-semibold text-terminal-text">Profile</h2>
       <p className="mt-4 text-sm leading-7 text-terminal-dim">
         {profile.about}
@@ -94,7 +94,7 @@ export function SkillsTab() {
       {skills.map((group) => (
         <article
           key={group.title}
-          className="min-w-0 rounded border border-terminal-line/35 bg-terminal-bg/45 p-3"
+          className="min-w-0 rounded border border-emerald-500/35 bg-black/88 p-3"
         >
           <h2 className="text-sm font-semibold text-terminal-glow">
             {group.title}
@@ -121,7 +121,7 @@ export function ProjectsTab() {
       {projects.map((project) => (
         <article
           key={project.title}
-          className="flex min-w-0 flex-col rounded border border-terminal-line/40 bg-terminal-bg/50 p-4"
+          className="flex min-w-0 flex-col rounded border border-emerald-500/35 bg-black/88 p-4"
         >
           <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
             {project.category}
@@ -157,7 +157,7 @@ export function ProjectsTab() {
 
 export function ExperienceTab() {
   return (
-    <article className="max-w-4xl rounded border border-terminal-line/40 bg-terminal-bg/45 p-4">
+    <article className="max-w-4xl rounded border border-emerald-500/35 bg-black/88 p-4">
       <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
         {experience.organization}
       </p>
@@ -185,7 +185,7 @@ export function EducationTab() {
         {education.map((item) => (
           <article
             key={item.school}
-            className="rounded border border-terminal-line/35 bg-terminal-bg/45 p-4"
+            className="rounded border border-emerald-500/35 bg-black/88 p-4"
           >
             <h2 className="text-base font-semibold text-terminal-text">
               {item.school}
@@ -206,7 +206,7 @@ export function EducationTab() {
         {certifications.map((item) => (
           <article
             key={item.name}
-            className="rounded border border-terminal-line/35 bg-terminal-bg/45 p-4"
+            className="rounded border border-emerald-500/35 bg-black/88 p-4"
           >
             <h2 className="text-base font-semibold text-terminal-text">
               {item.name}
@@ -229,7 +229,7 @@ export function ContactTab() {
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_1.15fr] lg:items-start">
-      <article className="rounded border border-terminal-line/40 bg-terminal-bg/45 p-4">
+      <article className="rounded border border-emerald-500/35 bg-black/88 p-4">
         <h2 className="text-xl font-semibold text-terminal-text">
           {contact.title}
         </h2>
@@ -251,7 +251,7 @@ export function ContactTab() {
                   ? "noreferrer noopener"
                   : undefined
               }
-              className="flex min-w-0 items-center gap-3 rounded border border-terminal-line/45 bg-terminal-bg/45 p-4 transition hover:border-terminal-glow/75 hover:text-terminal-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow"
+              className="flex min-w-0 items-center gap-3 rounded border border-emerald-500/35 bg-black/88 p-4 transition hover:border-terminal-glow/75 hover:text-terminal-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow"
               aria-label={`${link.label}: ${link.display}`}
             >
               <Icon className="h-5 w-5 shrink-0 text-terminal-glow" />

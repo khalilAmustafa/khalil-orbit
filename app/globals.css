@@ -162,6 +162,105 @@ dd {
   border-radius: 999px;
 }
 
+.walking-scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--scene-height);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.walking-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--bg-height);
+  background-image: url("/backgrounds/bg2.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: var(--bg-opacity);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.walking-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--bg-dark-top)) 0%,
+    rgba(0, 0, 0, var(--bg-dark-mid)) 50%,
+    rgba(0, 0, 0, var(--bg-dark-bottom)) 100%
+  );
+}
+
+.path-line {
+  position: absolute;
+  left: 52px;
+  right: 52px;
+  bottom: var(--path-bottom);
+  height: 2px;
+  opacity: var(--path-opacity);
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 197, 94, 0.35),
+    rgba(134, 239, 172, 0.8),
+    rgba(34, 197, 94, 0.35),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.35);
+}
+
+.guy-mover {
+  position: absolute;
+  bottom: var(--path-bottom);
+  width: var(--guy-size);
+  height: var(--guy-size);
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.guy-sprite {
+  width: var(--guy-size);
+  height: var(--guy-size);
+  background-image: url("/guy-run-v1.png");
+  background-repeat: no-repeat;
+  background-size: calc(var(--guy-size) * 5) calc(var(--guy-size) * 5);
+  background-position: calc(var(--guy-size) * -2) 0;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.35));
+}
+
+.goal-mover {
+  position: absolute;
+  bottom: var(--path-bottom);
+  width: var(--goal-size);
+  height: var(--goal-size);
+  z-index: 6;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.goal-sprite {
+  width: var(--goal-size);
+  height: var(--goal-size);
+  background-image: url("/goal-running_with_goal_visible.png");
+  background-repeat: no-repeat;
+  background-size: calc(var(--goal-size) * 5) calc(var(--goal-size) * 5);
+  background-position: 0 0;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.35));
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

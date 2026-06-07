@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { BackgroundScene } from "@/components/BackgroundScene";
+import BackgroundScene from "@/components/BackgroundScene";
 import {
   AboutTab,
   ContactTab,
@@ -13,6 +13,7 @@ import {
   type TabId
 } from "@/components/PortfolioTabs";
 import { Sidebar } from "@/components/Sidebar";
+import { WalkingScene } from "@/components/WalkingScene";
 
 const panelMeta: Record<TabId, { label: string; command: string }> = {
   home: {
@@ -47,6 +48,7 @@ const panelMeta: Record<TabId, { label: string; command: string }> = {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("home");
+  const showWalkingScene = activeTab === "home" || activeTab === "contact";
 
   const activeContent = useMemo(() => {
     switch (activeTab) {
@@ -75,7 +77,7 @@ export default function Home() {
       <BackgroundScene />
       <div className="relative z-10 mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-5 px-4 py-4 sm:px-6 lg:h-screen lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:px-10 lg:py-8 xl:px-12">
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <section className="terminal-card min-w-0 overflow-hidden rounded-md border border-terminal-line/60 bg-black/65 shadow-terminal backdrop-blur-sm lg:h-[calc(100vh-4rem)]">
+        <section className="terminal-card relative min-w-0 overflow-hidden rounded-md border border-emerald-500/40 bg-black/[0.92] shadow-terminal lg:h-[calc(100vh-4rem)]">
           <div className="flex flex-wrap items-start justify-between gap-3 border-b border-terminal-line/35 p-4 sm:p-5">
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-terminal-glow">
@@ -88,10 +90,14 @@ export default function Home() {
             </span>
           </div>
           <div className="h-full min-w-0 overflow-x-hidden overflow-y-auto p-4 sm:p-5 lg:h-[calc(100%-76px)]">
-            <div key={activeTab} className="active-panel min-w-0">
+            <div
+              key={activeTab}
+              className={`active-panel min-w-0 ${showWalkingScene ? "pb-[220px]" : ""}`}
+            >
               {activeContent}
             </div>
           </div>
+          {showWalkingScene ? <WalkingScene /> : null}
         </section>
       </div>
     </main>
