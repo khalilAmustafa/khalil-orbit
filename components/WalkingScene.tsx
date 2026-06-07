@@ -5,10 +5,10 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 const GUY_SEQUENCE = [0, 1, 2, 3, 4];
 const GOAL_SEQUENCE = [0, 1, 2, 3, 4];
 const SHEET_COLUMNS = 5;
-const WRAP_OFFSET = 120;
+const WRAP_OFFSET = 110;
 const START_X = 80;
-const GAP = 100;
-const SPEED_PX_PER_SECOND = 72;
+const GAP = 200;
+const SPEED_PX_PER_SECOND = 100;
 
 export function WalkingScene() {
   const sceneRef = useRef<HTMLDivElement | null>(null);
@@ -96,11 +96,11 @@ export function WalkingScene() {
             - Increase --path-bottom to move the whole walking line upward
             - Increase --scene-height if characters get clipped
           */
-          "--scene-height": "220px",
+          "--scene-height": "300px",
           "--path-bottom": "65px",
-          "--guy-size": "104px",
-          "--goal-size": "150px",
-          "--portal-height": "74px",
+          "--guy-size": "180px",
+          "--goal-size": "210px",
+          "--portal-height": "200px",
           "--bg-opacity": "0.25",
           "--bg-height": "175px",
           "--bg-dark-top": "0.28",

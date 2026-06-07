@@ -19,6 +19,7 @@ export type Project = {
     label: string;
     href: string;
     todo?: boolean;
+    hoverLabel?: string;
   }[];
 };
 
@@ -90,6 +91,14 @@ export const skills: SkillGroup[] = [
       "API design"
     ]
   },
+   {
+    title: "Cloud",
+    skills: [
+      "AWS Cloud fundamentals",
+      "Deployment planning",
+      "Environment configuration"
+    ]
+  },
   {
     title: "Databases & Infrastructure",
     skills: [
@@ -126,14 +135,7 @@ export const skills: SkillGroup[] = [
       "Tailwind CSS"
     ]
   },
-  {
-    title: "Cloud",
-    skills: [
-      "AWS Cloud fundamentals",
-      "Deployment planning",
-      "Environment configuration"
-    ]
-  },
+ 
   {
     title: "AI & Data",
     skills: [
@@ -176,8 +178,12 @@ export const projects: Project[] = [
       "JWT/CSRF-secured authentication"
     ],
     links: [
-      { label: "GitHub TODO", href: "#projects", todo: true },
-      { label: "Live Demo TODO", href: "#projects", todo: true }
+      {
+        label: "> live demo",
+        href: "#projects",
+        todo: true,
+        hoverLabel: "soon 🤫"
+      }
     ]
   },
   {
@@ -199,7 +205,62 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "GitHub TODO", href: "#projects", todo: true },
-      { label: "Live Demo TODO", href: "#projects", todo: true }
+      {
+        label: "> showcase",
+        href: "https://www.linkedin.com/posts/khalil-mustafa-7722382b0_%D8%A7%D8%AE%D9%8A%D9%8A%D8%B1%D8%A7-%D9%86%D8%B4%D8%A7%D8%B1%D9%83%D9%83%D9%85-%D8%A7%D9%86%D8%A7-%D9%88%D8%B2%D9%85%D9%8A%D9%84%D9%8A-raed-khalil-%D9%85%D8%B4%D8%B1%D9%88%D8%B9-activity-7455331015943823362--aHw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAErJBUYBptdJ2zsfH80p8W51YH3sf7Rjfag"
+      }
+    ]
+  },
+  {
+    title: "VisionPulse AI",
+    category: "AI-Powered Financial Market Intelligence",
+    description:
+      "Built an educational decision-support prototype that maps financial news, macroeconomic events, and market data into structured AI-generated asset reaction predictions.",
+    details: [
+      "Developed an event-to-asset prediction flow using market events, rule-based impact mapping, and Gemini-generated reasoning.",
+      "Integrated support for asset watchlists, macro/event calendars, prediction cards, and post-event review logic.",
+      "Built backend fallback behavior so the app can still run with seeded/mock data when external API keys are unavailable."
+    ],
+    tech: [
+      "Node.js",
+      "Express.js",
+      "JavaScript",
+      "Google Gemini",
+      "Market APIs",
+      "JSON storage",
+      "Rule-based fallback logic"
+    ],
+    links: [
+      {
+        label: "> github",
+        href: "https://github.com/RKA14406/Vision_Pulse"
+      }
+    ]
+  },
+  {
+    title: "Abyss of the Loss",
+    category: "2D Psychological Horror Game",
+    description:
+      "Built a 2D psychological horror and mystery game in Godot, focused on exploration, story progression, interactive environments, and atmospheric dark-forest visuals.",
+    details: [
+      "Implemented player movement, idle/walk animations, companion entities, and scene-based interaction logic.",
+      "Built multiple environments including forest and house scenes, with interactive doors, openable objects, and area detection.",
+      "Added lighting state changes, HUD/UI layer elements, and Godot scene/script structure using GDScript."
+    ],
+    tech: [
+      "Godot",
+      "GDScript",
+      "2D Game Development",
+      "Sprite Animation",
+      "Scene Management",
+      "Interactive Objects",
+      "Lighting States"
+    ],
+    links: [
+      {
+        label: "> github",
+        href: "https://github.com/khalilAmustafa/Abyss-of-the-Loss"
+      }
     ]
   }
 ];

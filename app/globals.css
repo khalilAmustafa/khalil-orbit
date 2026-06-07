@@ -122,6 +122,22 @@ dd {
   opacity: 0.82;
 }
 
+.terminal-button-tease {
+  position: relative;
+}
+
+.terminal-button-tease .tease-hover {
+  display: none;
+}
+
+.terminal-button-tease:hover .tease-default {
+  display: none;
+}
+
+.terminal-button-tease:hover .tease-hover {
+  display: inline;
+}
+
 .terminal-list-item {
   position: relative;
   padding-left: 1.25rem;
@@ -196,6 +212,40 @@ dd {
     rgba(0, 0, 0, 0.18),
     transparent
   );
+}
+
+.about-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/backgrounds/aboutbg.png");
+  background-repeat: no-repeat;
+  background-position: var(--about-bg-position-x) var(--about-bg-position-y);
+  background-size: var(--about-bg-size);
+  opacity: var(--about-bg-opacity);
+}
+
+.about-bg-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, var(--about-bg-fade-left)) 0%,
+      rgba(0, 0, 0, 0.72) 22%,
+      rgba(0, 0, 0, 0.38) 48%,
+      rgba(0, 0, 0, 0.12) 72%,
+      rgba(0, 0, 0, 0.04) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, var(--about-bg-fade-bottom)) 0%,
+      rgba(0, 0, 0, 0.08) 28%,
+      transparent 56%
+    );
 }
 
 @keyframes aboutGuyFloat {

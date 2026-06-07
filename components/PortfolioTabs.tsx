@@ -84,6 +84,12 @@ export function AboutTab() {
       className="about-layout relative min-h-[560px] overflow-hidden"
       style={
         {
+          "--about-bg-opacity": "0.9",
+          "--about-bg-size": "contain",
+          "--about-bg-position-x": "right",
+          "--about-bg-position-y": "bottom",
+          "--about-bg-fade-left": "0.82",
+          "--about-bg-fade-bottom": "0.32",
           "--about-guy-size": "460px",
           "--about-guy-right": "4%",
           "--about-guy-bottom": "56px",
@@ -95,6 +101,8 @@ export function AboutTab() {
         } as React.CSSProperties
       }
     >
+      <div className="about-bg" />
+      <div className="about-bg-fade" />
       <article className="about-profile-card about-text-soft-bg relative z-10 max-w-[760px] p-6 lg:w-[58%]">
         <h2 className="text-xl font-semibold text-terminal-text">Profile</h2>
         <p className="mt-4 text-sm leading-7 text-terminal-dim">
@@ -135,40 +143,86 @@ export function SkillsTab() {
 
 export function ProjectsTab() {
   return (
-    <div className="grid min-w-0 gap-4 xl:grid-cols-2">
-      {projects.map((project) => (
-        <article
-          key={project.title}
-          className="flex min-w-0 flex-col rounded border border-emerald-500/35 bg-black/88 p-4"
+    <div className="min-w-0">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs uppercase tracking-[0.16em] text-terminal-dim">
+          Selected projects
+        </p>
+        <a
+          className="terminal-button"
+          href="https://github.com/khalilAmustafa"
+          target="_blank"
+          rel="noreferrer noopener"
         >
-          <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
-            {project.category}
-          </p>
-          <h2 className="mt-2 text-lg font-semibold text-terminal-text">
-            {project.title}
-          </h2>
-          <p className="mt-4 text-sm leading-7 text-terminal-dim">
-            {project.description}
-          </p>
-          <div className="mt-3 space-y-2">
-            {project.details.map((detail) => (
-              <p key={detail} className="text-sm leading-7 text-terminal-dim">
-                {detail}
-              </p>
-            ))}
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.tech.map((item) => (
-              <span
-                key={item}
-                className="max-w-full break-words rounded border border-terminal-line/35 px-2 py-1 text-[0.7rem] leading-5 text-terminal-dim"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </article>
-      ))}
+          &gt; more projects
+        </a>
+      </div>
+      <div className="grid min-w-0 gap-4 xl:grid-cols-2">
+        {projects.map((project) => (
+          <article
+            key={project.title}
+            className="flex min-w-0 flex-col rounded border border-emerald-500/35 bg-black/88 p-4"
+          >
+            <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
+              {project.category}
+            </p>
+            <h2 className="mt-2 text-lg font-semibold text-terminal-text">
+              {project.title}
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-terminal-dim">
+              {project.description}
+            </p>
+            <div className="mt-3 space-y-2">
+              {project.details.map((detail) => (
+                <p key={detail} className="text-sm leading-7 text-terminal-dim">
+                  {detail}
+                </p>
+              ))}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.tech.map((item) => (
+                <span
+                  key={item}
+                  className="max-w-full break-words rounded border border-terminal-line/35 px-2 py-1 text-[0.7rem] leading-5 text-terminal-dim"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            {project.links.length > 0 ? (
+              <div className="mt-5 flex flex-wrap gap-3">
+                {project.links.map((link) =>
+                  link.todo ? (
+                    <span
+                      key={`${project.title}-${link.label}`}
+                      className={`terminal-button-disabled ${link.hoverLabel ? "terminal-button-tease" : ""}`}
+                    >
+                      {link.hoverLabel ? (
+                        <>
+                          <span className="tease-default">{link.label}</span>
+                          <span className="tease-hover">{link.hoverLabel}</span>
+                        </>
+                      ) : (
+                        link.label
+                      )}
+                    </span>
+                  ) : (
+                    <a
+                      key={`${project.title}-${link.label}`}
+                      className="terminal-button"
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      {link.label}
+                    </a>
+                  ),
+                )}
+              </div>
+            ) : null}
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
