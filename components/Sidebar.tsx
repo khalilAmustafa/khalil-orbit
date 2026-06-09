@@ -2,21 +2,36 @@
 
 import { MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { navItems, profile } from "@/data/portfolio";
 import type { TabId } from "./PortfolioTabs";
 
 type SidebarProps = {
   activeTab: TabId;
   setActiveTab: (tab: TabId) => void;
+  isOpen: boolean;
+  onClose: () => void;
 };
 
-export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
+export function Sidebar({
+  activeTab,
+  setActiveTab,
+  isOpen,
+  onClose
+}: SidebarProps) {
   return (
-    <aside className="z-10 w-full min-w-0 lg:sticky lg:top-8 lg:h-[calc(100vh-4rem)]">
-      <div className="terminal-card flex h-full flex-col rounded-md border border-emerald-500/40 bg-black/90 p-4 shadow-terminal">
+    <aside
+      className={`fixed inset-y-0 left-0 z-50 w-[min(20rem,calc(100vw-2rem))] min-w-0 transform overflow-y-auto p-4 transition-transform duration-200 ease-out lg:sticky lg:top-8 lg:z-10 lg:h-[calc(100vh-4rem)] lg:w-full lg:translate-x-0 lg:p-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <div className="terminal-card flex min-h-full flex-col rounded-md border border-emerald-500/40 bg-black/95 p-4 shadow-terminal lg:h-full lg:bg-black/90">
         <button
           type="button"
-          onClick={() => setActiveTab("home")}
+          onClick={() => {
+            setActiveTab("home");
+            onClose();
+          }}
           className="group flex items-center gap-4 rounded border border-terminal-line/50 p-3 text-left transition hover:border-terminal-glow/70 hover:bg-terminal-glow/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow"
           aria-label="Go to home tab"
         >
@@ -63,7 +78,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  onClose();
+                }}
                 className={`rounded border px-3 py-2 text-left text-xs tracking-[0.12em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow ${
                   isActive
                     ? "border-terminal-glow bg-terminal-glow/10 text-terminal-glow shadow-[0_0_20px_rgba(55,255,120,0.12)]"
@@ -75,6 +93,16 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             );
           })}
         </nav>
+
+        <div className="mt-auto border-t border-terminal-line/25 pt-3">
+          <Link
+            href="/privacy"
+            onClick={onClose}
+            className="text-[0.68rem] uppercase tracking-[0.16em] text-terminal-dim/65 transition hover:text-terminal-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow"
+          >
+            Privacy
+          </Link>
+        </div>
       </div>
     </aside>
   );
