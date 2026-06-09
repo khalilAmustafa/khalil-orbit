@@ -159,7 +159,7 @@ export function PortfolioShell() {
         <button
           type="button"
           aria-label="Close navigation"
-          className="fixed inset-0 z-40 bg-black/75 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black/55 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       ) : null}
