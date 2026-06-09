@@ -199,7 +199,7 @@ export function PortfolioShell() {
             <div className="relative z-10 h-full min-w-0 overflow-x-hidden overflow-y-auto p-4 sm:p-5 lg:h-[calc(100%-76px)]">
               <div
                 key={activeTab}
-                className={`active-panel relative z-10 min-w-0 ${showWalkingScene ? "pb-[220px]" : ""}`}
+                className={`active-panel relative z-10 min-w-0 ${showWalkingScene ? "pb-[160px] sm:pb-[220px] lg:pb-[300px]" : ""}`}
               >
                 {activeContent}
               </div>

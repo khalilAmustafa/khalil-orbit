@@ -88,7 +88,7 @@ export function HomeTab({ setActiveTab }: HomeTabProps) {
 export function ExperienceTab() {
   return (
     <section
-      className="about-layout relative min-h-[560px] overflow-hidden"
+      className="about-layout relative min-h-[300px] overflow-hidden lg:min-h-[560px]"
       style={
         {
           "--about-bg-opacity": "0.9",
@@ -110,7 +110,7 @@ export function ExperienceTab() {
     >
       <div className="about-bg" />
       <div className="about-bg-fade" />
-      <article className="about-profile-card about-text-soft-bg relative z-10 max-w-[760px] p-6 lg:w-[58%]">
+      <article className="about-profile-card about-text-soft-bg relative z-10 max-w-[760px] p-4 sm:p-6 lg:w-[58%]">
         <p className="text-xs uppercase tracking-[0.16em] text-terminal-glow">
           {experience.organization}
         </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FrameAnimation } from "@/components/FrameAnimation";
 
 const RUN_FRAME_COUNT = 25;
@@ -57,33 +57,6 @@ export function WalkingScene() {
       ref={sceneRef}
       aria-hidden="true"
       className="walking-scene"
-      style={
-        {
-          /*
-            Walking scene manual controls:
-            - Increase --guy-size to make the guy bigger
-            - Increase --goal-size to make goal.exe bigger
-            - Increase --bg-opacity to make bg2 more visible
-            - Increase --path-bottom to move the path line upward
-            - Increase --guy-bottom to move only the guy upward
-            - Increase --goal-bottom to move only the goal upward
-            - Increase --scene-height if characters get clipped
-          */
-          "--scene-height": "300px",
-          "--path-bottom": "65px",
-          "--guy-bottom": "55px",
-          "--goal-bottom": "50px",
-          "--guy-size": "180px",
-          "--goal-size": "210px",
-          "--portal-height": "200px",
-          "--bg-opacity": "0.25",
-          "--bg-height": "175px",
-          "--bg-dark-top": "0.28",
-          "--bg-dark-mid": "0.10",
-          "--bg-dark-bottom": "0.02",
-          "--path-opacity": "0.85",
-        } as CSSProperties
-      }
     >
       <div className="walking-bg" />
       <div className="path-line" />
