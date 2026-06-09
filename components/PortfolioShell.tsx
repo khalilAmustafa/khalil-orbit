@@ -163,7 +163,7 @@ export function PortfolioShell() {
           onClick={() => setIsSidebarOpen(false)}
         />
       ) : null}
-      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-5 px-4 pb-4 pt-16 sm:px-6 lg:h-screen lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:px-10 lg:py-8 xl:px-12">
+      <div className="relative mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-5 px-4 pb-4 pt-16 sm:px-6 lg:h-screen lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:px-10 lg:py-8 xl:px-12">
         <Sidebar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
