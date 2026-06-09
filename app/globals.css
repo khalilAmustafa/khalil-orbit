@@ -407,6 +407,8 @@ dd {
 }
 
 .education-list {
+  position: relative;
+  z-index: 2;
   display: grid;
   gap: 16px;
   min-width: 0;
@@ -741,20 +743,49 @@ dd {
   }
 
   .education-layout {
+    position: relative;
     grid-template-columns: 1fr;
+    min-height: 520px;
+  }
+
+  .education-card {
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .education-visual {
-    min-height: 240px;
+    position: absolute;
+    right: clamp(-48px, -4vw, 0px);
+    bottom: -24px;
+    z-index: 1;
+    width: min(340px, 76vw);
+    min-height: 0;
+    opacity: 0.36;
   }
 
   .education-study-animation {
-    width: min(260px, 72vw);
-    height: min(260px, 72vw);
+    width: min(320px, 76vw);
+    height: min(320px, 76vw);
   }
 }
 
 @media (max-width: 640px) {
+  .education-layout {
+    min-height: 620px;
+  }
+
+  .education-visual {
+    right: 50%;
+    bottom: 8px;
+    width: min(300px, 88vw);
+    transform: translateX(50%);
+    opacity: 0.3;
+  }
+
+  .education-study-animation {
+    width: min(300px, 88vw);
+    height: min(300px, 88vw);
+  }
+
   .education-card-inner {
     grid-template-columns: 1fr;
   }
