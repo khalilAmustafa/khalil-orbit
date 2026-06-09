@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import BackgroundScene from "@/components/BackgroundScene";
 import { AssetPreloader } from "@/components/AssetPreloader";
 import {
@@ -146,23 +146,25 @@ export function PortfolioShell() {
   return (
     <main className="portfolio-fade-in relative min-h-screen overflow-x-hidden text-terminal-text">
       <BackgroundScene />
-      <button
-        type="button"
-        aria-label={isSidebarOpen ? "Close navigation" : "Open navigation"}
-        aria-expanded={isSidebarOpen}
-        onClick={() => setIsSidebarOpen((current) => !current)}
-        className="fixed left-4 top-4 z-[60] inline-flex h-10 w-10 items-center justify-center rounded border border-terminal-line/60 bg-black/90 text-terminal-text shadow-terminal transition hover:border-terminal-glow hover:text-terminal-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow lg:hidden"
-      >
-        {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
-      {isSidebarOpen ? (
+      {!isSidebarOpen && (
+        <button
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded={false}
+          onClick={() => setIsSidebarOpen(true)}
+          className="fixed left-3 top-3 z-[60] inline-flex h-11 w-11 items-center justify-center rounded border border-terminal-line/60 bg-black/90 text-terminal-text shadow-terminal transition hover:border-terminal-glow hover:text-terminal-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terminal-glow lg:hidden"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      )}
+      {isSidebarOpen && (
         <button
           type="button"
           aria-label="Close navigation"
           className="fixed inset-0 z-40 bg-black/55 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
-      ) : null}
+      )}
       <div className="relative mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-5 px-4 pb-4 pt-16 sm:px-6 lg:h-screen lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:px-10 lg:py-8 xl:px-12">
         <Sidebar
           activeTab={activeTab}

@@ -693,25 +693,25 @@ dd {
 @media (max-width: 639px) {
   .walking-scene {
     --scene-height: 160px;
-    --path-bottom: 35px;
-    --guy-bottom: 28px;
-    --goal-bottom: 25px;
+    --path-bottom: 38px;
+    --guy-bottom: 34px;
+    --goal-bottom: 29px;
     --guy-size: 90px;
     --goal-size: 110px;
-    --bg-height: 100px;
-    --bg-opacity: 0.20;
+    --bg-height: 120px;
+    --bg-opacity: 0.22;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .walking-scene {
     --scene-height: 220px;
-    --path-bottom: 48px;
-    --guy-bottom: 40px;
-    --goal-bottom: 36px;
+    --path-bottom: 52px;
+    --guy-bottom: 47px;
+    --goal-bottom: 42px;
     --guy-size: 130px;
     --goal-size: 155px;
-    --bg-height: 130px;
+    --bg-height: 145px;
   }
 }
 
@@ -737,6 +737,7 @@ dd {
 @media (max-width: 1024px) {
   .education-tab-shell {
     min-height: auto;
+    overflow: visible;
   }
 
   .education-layout {
@@ -744,11 +745,12 @@ dd {
   }
 
   .education-visual {
-    min-height: 260px;
+    min-height: 240px;
   }
 
   .education-study-animation {
-    width: min(300px, 80vw);
+    width: min(260px, 72vw);
+    height: min(260px, 72vw);
   }
 }
 
