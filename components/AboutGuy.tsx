@@ -7,7 +7,7 @@ const IDLE_FPS = 6;
 
 export function AboutGuy() {
   return (
-    <div className="about-guy-float hidden lg:block" aria-hidden="true">
+    <div className="about-guy-float hidden sm:block" aria-hidden="true">
       <div className="about-guy-frame">
         <FrameAnimation
           framePath="/animations/Idle"
