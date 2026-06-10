@@ -2,6 +2,10 @@
 
 Interactive portfolio built with Next.js, TypeScript, Tailwind CSS, and a retro terminal visual style. The site combines a dark neon UI with custom animated scenes for the home, experience, and education sections.
 
+## Live Site
+
+Visit the portfolio at [khalils.codes](https://khalils.codes).
+
 ## Overview
 
 This portfolio includes:
@@ -22,6 +26,8 @@ This portfolio includes:
 - Lucide React
 
 ## Run Locally
+
+To run the project on your machine:
 
 ```bash
 npm install
